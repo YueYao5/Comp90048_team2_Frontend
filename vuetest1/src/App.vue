@@ -2,8 +2,12 @@
   <div id="app">
       <el-container style="height: 700px; border: 1px solid #eee">
           <!--Side Bar -->
-          <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-              <el-header height="100px" style="background-color: royalblue">Melbourne Logo</el-header>
+          <el-aside width="18%" style="background-color: rgb(238, 241, 246)">
+              <el-image
+                      style="width: 100%; height: 15%"
+                      :src="url"
+                      :fit="fit"></el-image>
+
 <!--              Show the menu dynamically-->
               <el-menu router :default-openeds="['0']">
                   <el-submenu v-for="(item,index) in $router.options.routes" :index="index+''" v-if="item.show">
@@ -46,7 +50,12 @@
 <script>
 
     export default {
-
+        data() {
+            return {
+                fit: 'fill',
+                url: 'https://courseseeker.edu.au/assets/images/institutions/3036.png'
+            }
+        }
 
     };
 </script>

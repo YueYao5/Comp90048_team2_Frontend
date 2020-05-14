@@ -18,17 +18,20 @@
                 const _this = this
                 axios.post('http://localhost:8181//selectmode//runalgo', {
                     data: "same"
-                }).then(function (response) {
+                }).then(function (response ) {
                     _this.loading=false;
-                    console.log(response);
+                    //console.log(response.data);
+                    console.log(response.data);
+                    //jump to next page
                     _this.$router.push({
                         path: '/ResultPage',
                         query: {
-                            data:response.status
+                            data:response.data
                         }
                     })
                 }).catch(function (error) {
                     console.log(error);
+                    _this.loading=false;
                 });
             },
             different(){
@@ -37,16 +40,20 @@
                 axios.post('http://localhost:8181//selectmode//runalgo', {
                     data: "different"
                 }).then(function (response) {
+                    //stop loading widget
                     _this.loading=false;
                     console.log(response);
                     _this.$router.push({
                         path: '/ResultPage',
                         query: {
-                            data:response.status
+                            data:response.data
                         }
                     })
                 }).catch(function (error) {
+                    //stop loading widget
+                    _this.loading=false;
                     console.log(error);
+
                 });
 
             }
