@@ -8,6 +8,7 @@ import ResultPage from "../views/ResultPage";
 import EChartStyle from "../views/EChartStyle";
 import HelloWork from "../views/HelloWork";
 import History from "../views/History";
+import UploadFiles from "../views/UploadFiles";
 
 Vue.use(VueRouter)
 
@@ -51,10 +52,18 @@ Vue.use(VueRouter)
       show: false
     },
     {
-      // 测试
+      // 测试画图
       path: '/HelloWork',
       name: 'HelloWork',
       component: HelloWork,
+      props:true,
+      show: false
+    },
+    {
+      // 测试上传文件
+      path: '/UploadFiles',
+      name: 'UploadFiles',
+      component: UploadFiles,
       props:true,
       show: false
     }
