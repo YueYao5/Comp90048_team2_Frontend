@@ -1,9 +1,9 @@
 <template>
 
     <div>
-        <h1>Please select the testing mode</h1>
-        <el-button type="primary" @click="same" round>Individual Comparision</el-button>
-        <el-button type="primary" @click="different" round>Group Comparision</el-button>
+        <h1>Test Your Model</h1>
+        <el-button type="primary" @click="same" round>Run the Algorithm</el-button>
+
         <template :data="showdata">{{showdata}}</template>
         <div v-loading="loading"> </div>
     </div>
@@ -16,12 +16,11 @@
             same(){
                 this.loading=true;
                 const _this = this
-                axios.post('http://localhost:8181//selectmode//runalgo', {
-                    data: "same"
-                }).then(function (response ) {
+                axios.post('http://localhost:8181//selectmode//runalgo').then(function (response) {
                     _this.loading=false;
                     //console.log(response.data);
                     console.log(response.data);
+                    //做个判断message返回算法有误
                     //jump to next page
                     _this.$router.push({
                         path: '/ResultPage',
@@ -33,29 +32,6 @@
                     console.log(error);
                     _this.loading=false;
                 });
-            },
-            different(){
-                this.loading=true;
-                const _this = this
-                axios.post('http://localhost:8181//selectmode//runalgo', {
-                    data: "different"
-                }).then(function (response) {
-                    //stop loading widget
-                    _this.loading=false;
-                    console.log(response);
-                    _this.$router.push({
-                        path: '/ResultPage',
-                        query: {
-                            data:response.data
-                        }
-                    })
-                }).catch(function (error) {
-                    //stop loading widget
-                    _this.loading=false;
-                    console.log(error);
-
-                });
-
             }
         },
         data(){
