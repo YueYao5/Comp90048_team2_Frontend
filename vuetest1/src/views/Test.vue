@@ -16,7 +16,7 @@
             same(){
                 this.loading=true;
                 const _this = this
-                axios.post('http://localhost:8181//selectmode//runalgo').then(function (response) {
+                axios.post('http://localhost:8181//runalgo').then(function (response) {
                     _this.loading=false;
                     //console.log(response.data);
                     console.log(response.data);

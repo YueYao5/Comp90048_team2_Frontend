@@ -9,6 +9,8 @@ import EChartStyle from "../views/EChartStyle";
 import HelloWork from "../views/HelloWork";
 import History from "../views/History";
 import UploadFiles from "../views/UploadFiles";
+import SignIn from "../views/Login";
+import SignUp from "../views/Register"
 
 Vue.use(VueRouter)
 
@@ -66,7 +68,24 @@ Vue.use(VueRouter)
       component: UploadFiles,
       props:true,
       show: false
+    },
+    {
+      // 登录
+      path: '/Login',
+      name: 'Login',
+      component: SignIn,
+      props:true,
+      show: false
+    },
+    {
+      // 注册
+      path: '/Register',
+      name: 'Register',
+      component: SignUp,
+      props:true,
+      show: false
     }
+
 
 ]
 
