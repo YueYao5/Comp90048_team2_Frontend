@@ -36,6 +36,7 @@
         created() {},
         methods: {
             doLogin() {
+                const _this=this;
                 if (!this.user.username) {
                     this.$message.error("请输入用户名！");
                     return;
@@ -48,16 +49,17 @@
                     this.global.userName=this.user.username;
                     this.$router.push({ path: "/Home" });
                     //登录成功的跳转
-                    // axios.post("http://localhost:8181//login", {
-                    //         name: this.user.username,
-                    //         password: this.user.password}).then(res => {
-                    //     // console.log("输出response.data.status", res.data.status);
-                    //     if (res.data.status === 200) {
-                    //         this.$router.push({ path: "/Home" });
-                    //     } else {
-                    //         alert("您输入的用户名或密码错误！");
-                    //     }
-                    // });
+                    axios.post("http://localhost:8181//login", {
+                            name: this.user.username,
+                            password: this.user.password}).then(res => {
+                        // console.log("输出response.data.status", res.data.status);
+
+                        if (res.data.status === 200) {
+                            _this.$router.push({ path: '/Home' });
+                        } else {
+                            alert("您输入的用户名或密码错误！");
+                        }
+                    });
                 }
             }
         }

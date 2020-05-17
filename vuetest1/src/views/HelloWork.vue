@@ -19,18 +19,18 @@
             return {
                 // 图表数据
                 barData: {
-                    '2011': [18203, 23489, 29034, 104970, 131744, 630230],
-                    '2012': [19325, 23438, 31000, 121594, 134141, 681807]
+                    'possible':[18, 30, 60, 50, 70, 90],
+                    'treshold':[18, 30, 20, 50, 70, 10]
                 },
                 focusType: 1,
                 //定义组件，在上面用：is使用，不需要components注册
                 currentView: barEcharts,
                 categoryData: {
-                    data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
+                    data: ['algo1', 'algo2', 'algo3', 'algo4', 'algo5', 'algo6']
                 },
-                legendData: ['2011', '2012'],
+                legendData: ['possible','treshold'],
                 echarttitle: {
-                    text: '世界人口总量',
+                    text: 'Result(%)',
                     left: 'right',
                     textStyle: {
                         color: '#FF0000',

@@ -24,7 +24,13 @@
             //检查是否登录
             if(this.global.userName==''){
                 //跳转登录
-                this.$router.push({path: '/Login'})
+                this.$router.push({
+                    path: '/Login',
+                    query: {
+                        //跳回的页面
+                        data:this.$route.path
+                    }
+                })
             }else{
                 this.loading=true;
                 const _this = this;

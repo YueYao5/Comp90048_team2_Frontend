@@ -10,7 +10,8 @@ import HelloWork from "../views/HelloWork";
 import History from "../views/History";
 import UploadFiles from "../views/UploadFiles";
 import SignIn from "../views/Login";
-import SignUp from "../views/Register"
+import SignUp from "../views/Register";
+import Progress from "../views/Progress";
 
 Vue.use(VueRouter)
 
@@ -82,6 +83,14 @@ Vue.use(VueRouter)
       path: '/Register',
       name: 'Register',
       component: SignUp,
+      props:true,
+      show: false
+    },
+    {
+      // 测试流程
+      path: '/Progress',
+      name: 'Progress',
+      component: Progress,
       props:true,
       show: false
     }

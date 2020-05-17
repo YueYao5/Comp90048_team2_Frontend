@@ -2,7 +2,7 @@
 
     <div>
         <h1>Test Your Model</h1>
-        <el-button type="primary" @click="same" round>Run the Algorithm</el-button>
+        <el-button type="primary" @click="runAlgorithm" round>Run the Algorithm</el-button>
 
         <template :data="showdata">{{showdata}}</template>
         <div v-loading="loading"> </div>
@@ -13,10 +13,21 @@
     export default {
         name: "Test",
         methods:{
-            same(){
+            runAlgorithm(){
                 this.loading=true;
-                const _this = this
-                axios.post('http://localhost:8181//runalgo').then(function (response) {
+                const _this = this;
+                if(this.global.userName==''){
+                    //提示登录
+                    this.$router.push({
+                        path: '/ResultPage',
+                        query: {
+                        //跳回的页面
+                            data:this.$route.path
+                        }
+                    })
+
+                }
+                axios.post('http://localhost:8181//runalgo',{name:this.global.userName}).then(function (response) {
                     _this.loading=false;
                     //console.log(response.data);
                     console.log(response.data);
@@ -32,7 +43,7 @@
                     console.log(error);
                     _this.loading=false;
                 });
-            }
+            },
         },
         data(){
 
