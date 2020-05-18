@@ -22,7 +22,7 @@
             //just a test data
             $.ajax({
                 url:"http://localhost:8181/runalgo",
-                type:"get",
+                type:"post",
                 async:false,
                 dataType:"json",
                 data:{"userEmail":"saakd@qq.com"},
