@@ -1,9 +1,9 @@
 <template>
 
     <div>
-        <h1>Please select the testing mode</h1>
-        <el-button type="primary" @click="same" round>Individual Comparision</el-button>
-        <el-button type="primary" @click="different" round>Group Comparision</el-button>
+        <h1>Test Your Model</h1>
+        <el-button type="primary" @click="runAlgorithm" round>Run the Algorithm</el-button>
+
         <template :data="showdata">{{showdata}}</template>
         <div v-loading="loading"> </div>
     </div>
@@ -11,52 +11,66 @@
 
 <script>
     export default {
+
         name: "Test",
         methods:{
-            same(){
+            runAlgorithm(){
                 this.loading=true;
-                const _this = this
-                axios.post('http://localhost:8181//selectmode//runalgo', {
-                    data: "same"
-                }).then(function (response ) {
-                    _this.loading=false;
-                    //console.log(response.data);
-                    console.log(response.data);
-                    //jump to next page
-                    _this.$router.push({
+                const _this = this;
+                if(this.global.userName==''){
+                    //提示登录
+                    this.$router.push({
                         path: '/ResultPage',
                         query: {
-                            data:response.data
+                        //跳回的页面
+                            data:this.$route.path
                         }
                     })
-                }).catch(function (error) {
-                    console.log(error);
-                    _this.loading=false;
+
+                }
+                //axios.post('http://localhost:8181//runalgo',{name:this.global.userName}).then(function (response) {
+                    //_this.loading=false;
+                    //console.log(response.data);
+                    //console.log(response.data);
+                    //做个判断message返回算法有误
+                    //jump to next page
+                    //_this.$router.push({
+                        //path: '/ResultPage',
+                        //query: {
+                            //data:response.data
+                       // }
+                    //})
+                //}).catch(function (error) {
+                    //console.log(error);
+                    //_this.loading=false;
+                //});
+                $.ajax({
+                    async : false,
+                    url : "http://localhost:8181//runalgo",
+                    type : 'POST',
+                    contentType : 'application/x-www-form-urlencoded',
+                    dataType:'json',
+                    data : {
+                        "userEmail": this.global.userName},
+                    success : function(response) {
+                        _this.loading=false;
+                        //console.log(response.data);
+                        console.log(response);
+                        //做个判断message返回算法有误
+                        //jump to next page
+                        _this.$router.push({
+                            path: '/ResultPage',
+                            query: {
+                                data: response
+                            }
+                        })
+                    },
+                    error:function(XMLHttpRequest, textStatus){
+                        console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
+                        console.log(textStatus);
+                    }
                 });
             },
-            different(){
-                this.loading=true;
-                const _this = this
-                axios.post('http://localhost:8181//selectmode//runalgo', {
-                    data: "different"
-                }).then(function (response) {
-                    //stop loading widget
-                    _this.loading=false;
-                    console.log(response);
-                    _this.$router.push({
-                        path: '/ResultPage',
-                        query: {
-                            data:response.data
-                        }
-                    })
-                }).catch(function (error) {
-                    //stop loading widget
-                    _this.loading=false;
-                    console.log(error);
-
-                });
-
-            }
         },
         data(){
 

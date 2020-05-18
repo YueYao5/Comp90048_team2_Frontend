@@ -5,7 +5,13 @@ import App from '../App.vue'
 import Test from '../views/Test.vue'
 import Index from "../views/Index";
 import ResultPage from "../views/ResultPage";
-import LoadTest from "../views/LoadTest";
+import EChartStyle from "../views/EChartStyle";
+import HelloWork from "../views/HelloWork";
+import History from "../views/History";
+import UploadFiles from "../views/UploadFiles";
+import SignIn from "../views/Login";
+import SignUp from "../views/Register";
+import Progress from "../views/Progress";
 
 Vue.use(VueRouter)
 
@@ -26,6 +32,11 @@ Vue.use(VueRouter)
         path: '/Test',
         name: 'Try Your Model',
         component: Test
+      },
+      {
+        path: '/History',
+        name: 'Review the Record',
+        component: History
       }
     ]
   },
@@ -37,12 +48,53 @@ Vue.use(VueRouter)
       show: false
     },
     {
-      path: '/LoadTest',
-      name: 'LoadTest',
-      component: LoadTest,
+      path: '/EChartStyle',
+      name: 'EChartStyle',
+      component: EChartStyle,
+      props:true,
+      show: false
+    },
+    {
+      // 测试画图
+      path: '/HelloWork',
+      name: 'HelloWork',
+      component: HelloWork,
+      props:true,
+      show: false
+    },
+    {
+      // 测试上传文件
+      path: '/UploadFiles',
+      name: 'UploadFiles',
+      component: UploadFiles,
+      props:true,
+      show: false
+    },
+    {
+      // 登录
+      path: '/Login',
+      name: 'Login',
+      component: SignIn,
+      props:true,
+      show: false
+    },
+    {
+      // 注册
+      path: '/Register',
+      name: 'Register',
+      component: SignUp,
+      props:true,
+      show: false
+    },
+    {
+      // 测试流程
+      path: '/Progress',
+      name: 'Progress',
+      component: Progress,
       props:true,
       show: false
     }
+
 
 ]
 

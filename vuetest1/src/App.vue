@@ -22,7 +22,15 @@
           <el-container>
               <!--Header -->
               <el-header style="text-align: right; font-size: 12px">
-                  <span>Group 2</span>
+                  <span v-if="this.global.userName==''">
+                      <el-button type="text" @click="runLogin">Login</el-button>
+                      <el-button type="text" @click="runRegister">Register</el-button>
+                  </span>
+                  <span v-else>
+                      Welcome {{this.global.userName}}
+                      <el-button type="text" @click="runLogout">Logout</el-button>
+                  </span>
+
               </el-header>
               <!--Dynamic Page-->
               <el-main>
@@ -53,8 +61,25 @@
         data() {
             return {
                 fit: 'fill',
-                url: 'https://courseseeker.edu.au/assets/images/institutions/3036.png'
+                url: 'https://courseseeker.edu.au/assets/images/institutions/3036.png',
             }
+        },
+        methods:{
+            runLogin(){
+                //检测数据是否可修改--testing
+                // this.global.userName='Alice';
+                // window.reload();
+                this.$router.push({path: '/Login'})
+            },
+            runRegister(){
+                this.$router.push({path: '/Register'})
+            },
+            runLogout(){
+                this.global.userName='';
+                location.reload();
+            }
+
+
         }
 
     };
