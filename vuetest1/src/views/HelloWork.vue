@@ -13,22 +13,53 @@
 
 <script>
     import barEcharts from './EChartStyle' //导入组件
+    var result
+    var probability=[]
+    var threshold=[]
+    var matricsName=[]
     export default {
+        created:function () {
+            //just a test data
+            $.ajax({
+                url:"http://localhost:8181/runalgo",
+                type:"post",
+                async:false,
+                dataType:"json",
+                data:{"userEmail":"saakd@qq.com"},
+                success: function(data) {
+                    result = data;
+                },
+                error:function(XMLHttpRequest, textStatus){
+                    console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
+                    console.log(textStatus);
+                }
+            })
+            console.log(result)
+            for (var i in result["probabilityTable"]){
+                probability.push(result["probabilityTable"][i]["similarity"]*100)
+                matricsName.push(result["probabilityTable"][i]["metricsName"])
+            }
+            for (var i in result["thresholdTable"]){
+                threshold.push(result["thresholdTable"][i]["threshold"]*100)
+            }
+
+        },
         name: 'HelloWork',
         data () {
+
             return {
                 // 图表数据
                 barData: {
-                    'possible':[18, 30, 60, 50, 70, 90],
-                    'treshold':[18, 30, 20, 50, 70, 10]
+                    'possible':probability,
+                    'threshold':threshold
                 },
                 focusType: 1,
                 //定义组件，在上面用：is使用，不需要components注册
                 currentView: barEcharts,
                 categoryData: {
-                    data: ['algo1', 'algo2', 'algo3', 'algo4', 'algo5', 'algo6']
+                    data: matricsName
                 },
-                legendData: ['possible','treshold'],
+                legendData: ['possible','threshold'],
                 echarttitle: {
                     text: 'Result(%)',
                     left: 'right',
