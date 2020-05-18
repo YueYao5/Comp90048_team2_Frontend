@@ -2,8 +2,11 @@
 
     <div>
         <h1>Test Your Model</h1>
+        <input v-model="message" placeholder="edit me">
+        <p>Message is: {{ message }}</p>
+        <br>
         <el-button type="primary" @click="runAlgorithm" round>Run the Algorithm</el-button>
-
+        <br>
         <template :data="showdata">{{showdata}}</template>
         <div v-loading="loading"> </div>
     </div>
@@ -19,7 +22,7 @@
                 if(this.global.userName==''){
                     //提示登录
                     this.$router.push({
-                        path: '/ResultPage',
+                        path: '/Login',
                         query: {
                         //跳回的页面
                             data:this.$route.path
@@ -27,7 +30,10 @@
                     })
 
                 }
-                axios.post('http://localhost:8181//runalgo',{name:this.global.userName}).then(function (response) {
+                axios.post('http://localhost:8181//runalgo',{
+                    name:this.global.userName,
+                    alParam:this.message
+                }).then(function (response) {
                     _this.loading=false;
                     //console.log(response.data);
                     console.log(response.data);
@@ -49,7 +55,8 @@
 
             return {
                 showdata:this.showdata,
-                loading: false
+                loading: false,
+                message:''
             }
         }
     }
