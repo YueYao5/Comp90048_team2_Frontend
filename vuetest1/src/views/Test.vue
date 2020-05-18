@@ -30,24 +30,47 @@
                     })
 
                 }
-                axios.post('http://localhost:8181//runalgo',{
-                    name:this.global.userName,
-                    alParam:this.message
-                }).then(function (response) {
-                    _this.loading=false;
+                //axios.post('http://localhost:8181//runalgo',{name:this.global.userName}).then(function (response) {
+                    //_this.loading=false;
                     //console.log(response.data);
-                    console.log(response.data);
+                    //console.log(response.data);
                     //做个判断message返回算法有误
                     //jump to next page
-                    _this.$router.push({
-                        path: '/ResultPage',
-                        query: {
-                            data:response.data
-                        }
-                    })
-                }).catch(function (error) {
-                    console.log(error);
-                    _this.loading=false;
+                    //_this.$router.push({
+                        //path: '/ResultPage',
+                        //query: {
+                            //data:response.data
+                       // }
+                    //})
+                //}).catch(function (error) {
+                    //console.log(error);
+                    //_this.loading=false;
+                //});
+                $.ajax({
+                    async : false,
+                    url : "http://localhost:8181//runalgo",
+                    type : 'POST',
+                    contentType : 'application/x-www-form-urlencoded',
+                    dataType:'json',
+                    data : {
+                        "userEmail": this.global.userName},
+                    success : function(response) {
+                        _this.loading=false;
+                        //console.log(response.data);
+                        console.log(response);
+                        //做个判断message返回算法有误
+                        //jump to next page
+                        _this.$router.push({
+                            path: '/ResultPage',
+                            query: {
+                                data: response
+                            }
+                        })
+                    },
+                    error:function(XMLHttpRequest, textStatus){
+                        console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
+                        console.log(textStatus);
+                    }
                 });
             },
         },

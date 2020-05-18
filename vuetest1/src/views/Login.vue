@@ -24,7 +24,8 @@
 
 <script>
     export default {
-        name: "Login",
+        name: "userEmail",
+        papssword:"userPassword",
         data() {
             return {
                 user: {
@@ -49,17 +50,32 @@
                     this.global.userName=this.user.username;
                     this.$router.push({ path: "/Home" });
                     //登录成功的跳转
-                    axios.post("http://localhost:8181//login", {
-                            name: this.user.username,
-                            password: this.user.password}).then(res => {
-                        // console.log("输出response.data.status", res.data.status);
+                    console.log({
+                        "userEmail": this.user.username,
+                        "userPassword": this.user.password})
 
-                        if (res.data.status === 200) {
-                            _this.$router.push({ path: '/Home' });
-                        } else {
-                            alert("您输入的用户名或密码错误！");
+                    $.ajax({
+                        async : false,
+                        url : "http://localhost:8181//login",
+                        type : 'POST',
+                        contentType : 'application/x-www-form-urlencoded',
+                        dataType:'text',
+                        data : {
+                            "userEmail": this.user.username,
+                            "userPassword": this.user.password},
+                        success : function(res) {
+                            if (res === "true") {
+                                _this.$router.push({ path: '/Home' });
+                            } else {
+                                alert("您输入的用户名或密码错误！");
+                            }
+                        },
+                        error:function(XMLHttpRequest, textStatus){
+                            console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
+                            console.log(textStatus);
                         }
                     });
+
                 }
             }
         }

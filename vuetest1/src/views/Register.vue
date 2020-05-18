@@ -53,19 +53,32 @@
                         return;
                     } else {
                         // this.$router.push({ path: "/" }); //无需向后台提交数据，方便前台调试
-                        axios.post("http://localhost:8181//register", {
-                                email: this.user.email,
-                                password: this.user.password
-                            }).then(res => {
+                        console.log({
+                            "userEmail": this.user.email,
+                            "userPassword": this.user.password})
+                        $.ajax({
+                            async : false,
+                            url : "http://localhost:8181//register",
+                            type : 'POST',
+                            contentType : 'application/x-www-form-urlencoded',
+                            dataType:'text',
+                            data : {
+                                "userEmail": this.user.email,
+                                "userPassword": this.user.password},
+                            success : function(res) {
                                 console.log(res);
                                 //通过string来判断注册状态
-                                if (res.data.status === 200) {
+                                if (res === "true") {
                                     this.$router.push({ path: "/Home" });
                                 } else {
                                     alert("您输入的用户名已存在！");
                                 }
-
-                            });
+                            },
+                            error:function(XMLHttpRequest, textStatus){
+                                console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
+                                console.log(textStatus);
+                            }
+                        });
                     }
                 }
             }
