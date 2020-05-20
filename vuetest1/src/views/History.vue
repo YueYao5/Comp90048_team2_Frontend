@@ -62,9 +62,9 @@
                         //做个判断response 返回的是record还是空
                         _this.resultData=response;
                         //这里是判断是否是没有历史记录的东西
-                        // if(_this.resultData.errorInfo=="Empty History"){
-                        //     alert("Empty History");
-                        // }
+                        if(_this.resultData[0]["fileName"]=="null"){
+                             alert("Empty History");
+                         }
                     },
                     error:function(XMLHttpRequest, textStatus){
                         console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
