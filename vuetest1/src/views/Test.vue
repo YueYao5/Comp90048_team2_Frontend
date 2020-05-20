@@ -46,6 +46,17 @@
 <script>
     export default {
         name: "Test",
+        created(){
+            if(this.global.userName=''){
+                this.$router.push({
+                    path: '/Login',
+                    query: {
+                        //跳回的页面
+                        data:this.$route.path
+                    }
+                })
+            }
+        },
         methods:{
             runAlgorithm(){
                 this.loading=true;

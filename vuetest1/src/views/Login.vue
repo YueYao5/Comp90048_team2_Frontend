@@ -3,18 +3,18 @@
         <div class="login-wrap">
             <el-row type="flex" justify="center">
                 <el-form ref="loginForm" :model="user"  status-icon label-width="80px">
-                    <h3>登录</h3>
+                    <h3>Login</h3>
                     <hr>
-                    <el-form-item prop="username" label="用户名">
-                        <el-input v-model="user.username" placeholder="请输入用户名" prefix-icon></el-input>
+                    <el-form-item prop="username" label="user Email">
+                        <el-input v-model="user.username" placeholder="Please enter your email" prefix-icon></el-input>
                     </el-form-item>
-                    <el-form-item id="password" prop="password" label="密码">
-                        <el-input v-model="user.password" show-password placeholder="请输入密码"></el-input>
+                    <el-form-item id="password" prop="password" label="password">
+                        <el-input v-model="user.password" show-password placeholder="please enter your password"></el-input>
                     </el-form-item>
-                    <router-link to="/">找回密码</router-link>
-                    <router-link to="/Register">注册账号</router-link>
+
+                    <router-link to="/Register">SIGN UP</router-link>
                     <el-form-item>
-                        <el-button type="primary" icon="el-icon-upload" @click="doLogin()">登 录</el-button>
+                        <el-button type="primary" icon="el-icon-upload" @click="doLogin()">LOGIN</el-button>
                     </el-form-item>
                 </el-form>
             </el-row>
@@ -39,10 +39,10 @@
             doLogin() {
                 const _this=this;
                 if (!this.user.username) {
-                    this.$message.error("请输入用户名！");
+                    this.$message.error("Please enter your email！");
                     return;
                 } else if (!this.user.password) {
-                    this.$message.error("请输入密码！");
+                    this.$message.error("Please enter your password！");
                     return;
                 } else {
                     //校验用户名和密码是否正确;
@@ -68,7 +68,7 @@
                                 _this.$router.push({ path: '/Home' });
                                 _this.global.userName=_this.user.username;
                             } else {
-                                alert("您输入的用户名或密码错误！");
+                                alert("Your username and password are not correct！");
                             }
                         },
                         error:function(XMLHttpRequest, textStatus){
