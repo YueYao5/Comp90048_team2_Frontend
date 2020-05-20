@@ -47,8 +47,8 @@
                 } else {
                     //校验用户名和密码是否正确;
                     // Testing--是否正确跳转
-                    this.global.userName=this.user.username;
-                    this.$router.push({ path: "/Home" });
+                    // this.global.userName=this.user.username;
+                    // this.$router.push({ path: "/Home" });
                     //登录成功的跳转
                     console.log({
                         "userEmail": this.user.username,
@@ -66,6 +66,7 @@
                         success : function(res) {
                             if (res === "true") {
                                 _this.$router.push({ path: '/Home' });
+                                _this.global.userName=this.user.username
                             } else {
                                 alert("您输入的用户名或密码错误！");
                             }
@@ -86,12 +87,13 @@
     .login {
         width: 100%;
         height: 740px;
-        background: url("../assets/LOGO/Logo.png") no-repeat;
+        /*background: url("../assets/LOGO/Logo.png") no-repeat;*/
         background-size: cover;
         overflow: hidden;
     }
     .login-wrap {
-        background: url("../assets/LOGO/UnimelbLogo.png") no-repeat;
+        /*background: url("../assets/LOGO/UnimelbLogo.png") no-repeat;*/
+        background-color: #e5e5e5;
         background-size: cover;
         width: 400px;
         height: 300px;
