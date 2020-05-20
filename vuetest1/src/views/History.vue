@@ -5,9 +5,9 @@
         <el-table :data="this.resultData" v-if="resultData.errorInfo!='Empty History'">
             <el-table-column prop="fileName" label="File Name" width="120">
             </el-table-column>
-            <el-table-column prop="possibility" label="Possibility" width="120">
+            <el-table-column prop="possibility" label="Result" width="120">
             </el-table-column>
-            <el-table-column prop="submissionTime" label="Possibility" width="120">
+            <el-table-column prop="submissionTime" label="Submission Time" width="120">
             </el-table-column>
         </el-table>
         <div v-else>
@@ -20,7 +20,7 @@
 <script>
     export default {
         name: "History",
-        mounted() {
+        created() {
             //检查是否登录
             if(this.global.userName==''){
                 //跳转登录

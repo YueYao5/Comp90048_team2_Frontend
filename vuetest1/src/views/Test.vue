@@ -61,17 +61,17 @@
             runAlgorithm(){
                 this.loading=true;
                 const _this = this;
-                if(this.global.userName==''){
-                    //提示登录
-                    this.$router.push({
-                        path: '/Login',
-                        query: {
-                        //跳回的页面
-                            data:this.$route.path
-                        }
-                    })
-
-                }
+                // if(this.global.userName==''){
+                //     //提示登录
+                //     this.$router.push({
+                //         path: '/Login',
+                //         query: {
+                //         //跳回的页面
+                //             data:this.$route.path
+                //         }
+                //     })
+                //
+                // }
 
                 $.ajax({
                     async : false,

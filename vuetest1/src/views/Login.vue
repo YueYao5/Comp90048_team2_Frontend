@@ -5,7 +5,7 @@
                 <el-form ref="loginForm" :model="user"  status-icon label-width="80px">
                     <h3>Login</h3>
                     <hr>
-                    <el-form-item prop="username" label="user Email">
+                    <el-form-item prop="username" label="Email">
                         <el-input v-model="user.username" placeholder="Please enter your email" prefix-icon></el-input>
                     </el-form-item>
                     <el-form-item id="password" prop="password" label="password">
