@@ -79,7 +79,7 @@
                         //做个判断message返回算法有误
                         //jump to next page
                         _this.$router.push({
-                            path: '/HelloWork',
+                            path: '/ResultPage',
                             query: {
                                 data: response
                             }

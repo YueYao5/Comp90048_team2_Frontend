@@ -35,18 +35,41 @@
                 this.loading=true;
                 const _this = this;
                 // 请求接口
-                axios.post('http://localhost:8181//getRecords',{userEmail:this.global.userName}).then(function (response) {
-                    _this.loading=false;
+                //axios.post('http://localhost:8181//getRecords',{userEmail:this.global.userName}).then(function (response) {
+                    //_this.loading=false;
                     //console.log(response.data);
-                    console.log(response.data);
+                    //console.log(response.data);
                     //做个判断response 返回的是record还是空
-                    _this.resultData=response.data;
-                    if(_this.resultData.errorInfo=="Empty History"){
-                        alert("Empty History");
+                    //_this.resultData=response.data;
+                    //if(_this.resultData.errorInfo=="Empty History"){
+                        //alert("Empty History");
+                    //}
+                //}).catch(function (error) {
+                    //console.log(error);
+                    //_this.loading=false;
+                //});
+                $.ajax({
+                    async : false,
+                    url : 'http://localhost:8181//getRecords',
+                    type : 'POST',
+                    contentType : 'application/x-www-form-urlencoded',
+                    dataType:'json',
+                    data : {userEmail:this.global.userName},
+                    success : function(response) {
+                        _this.loading=false;
+                        //console.log(response.data);
+                        console.log(response.data);
+                        //做个判断response 返回的是record还是空
+                        _this.resultData=response.data;
+                        if(_this.resultData.errorInfo=="Empty History"){
+                            alert("Empty History");
+                        }
+                    },
+                    error:function(XMLHttpRequest, textStatus){
+                        console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
+                        console.log(textStatus);
+                        _this.loading=false;
                     }
-                }).catch(function (error) {
-                    console.log(error);
-                    _this.loading=false;
                 });
             }
         },

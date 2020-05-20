@@ -66,7 +66,7 @@
                         success : function(res) {
                             if (res === "true") {
                                 _this.$router.push({ path: '/Home' });
-                                _this.global.userName=this.user.username
+                                _this.global.userName=_this.user.username;
                             } else {
                                 alert("您输入的用户名或密码错误！");
                             }

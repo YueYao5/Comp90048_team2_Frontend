@@ -1,6 +1,6 @@
 <template>
     <div>
-        <template>{{data}}</template>
+
         <component :is="currentView"
                    :data="barData"
                    :title="echarttitle"
@@ -15,6 +15,9 @@
 
 <script>
     import barEcharts from './EChartStyle' //导入组件
+    var probability=[]
+    var threshold=[]
+    var matricsName=[]
     export default {
         name: "ResultPage",
         data(){
@@ -63,11 +66,10 @@
         methods:{
 
         },
-        mounted() {
-            var probability=[]
-            var threshold=[]
-            var matricsName=[]
+        created() {
+
             this.resultData=this.$route.query.data;
+            console.log(this.resultData);
             for (var i in this.resultData["probabilityTable"]){
                 probability.push(this.resultData["probabilityTable"][i]["similarity"]*100)
                 matricsName.push(this.resultData["probabilityTable"][i]["metricsName"])

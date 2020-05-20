@@ -40,6 +40,7 @@
         },
         methods: {
             doRegister() {
+                const _this=this;
 
                 if (!this.user.email) {
                     this.$message.error("请输入邮箱！");
@@ -69,7 +70,7 @@
                                 console.log(res);
                                 //通过string来判断注册状态
                                 if (res === "true") {
-                                    this.$router.push({ path: "/Home" });
+                                    _this.$router.push({ path: "/Home" });
                                 } else {
                                     alert("您输入的用户名已存在！");
                                 }
