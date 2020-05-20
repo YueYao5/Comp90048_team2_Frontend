@@ -44,10 +44,12 @@
 </template>
 
 <script>
+
     export default {
         name: "Test",
         created(){
-            if(this.global.userName=''){
+            console.log(this.global.userName)
+            if(this.global.userName==''){
                 this.$router.push({
                     path: '/Login',
                     query: {
@@ -72,7 +74,10 @@
                 //     })
                 //
                 // }
-
+                console.log({
+                    "userEmail": this.global.userName,
+                    "n":this.message
+                })
                 $.ajax({
                     async : false,
                     url : "http://localhost:8181//runalgo",
@@ -80,7 +85,7 @@
                     contentType : 'application/x-www-form-urlencoded',
                     dataType:'json',
                     data : {
-                        "userEmail": this.global.userName,
+                        "userEmail": _this.global.userName,
                         "n":this.message
                     },
                     success : function(response) {
