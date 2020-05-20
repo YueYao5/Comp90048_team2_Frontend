@@ -58,12 +58,13 @@
                     success : function(response) {
                         _this.loading=false;
                         //console.log(response.data);
-                        console.log(response.data);
+                        console.log(response);
                         //做个判断response 返回的是record还是空
-                        _this.resultData=response.data;
-                        if(_this.resultData.errorInfo=="Empty History"){
-                            alert("Empty History");
-                        }
+                        _this.resultData=response;
+                        //这里是判断是否是没有历史记录的东西
+                        // if(_this.resultData.errorInfo=="Empty History"){
+                        //     alert("Empty History");
+                        // }
                     },
                     error:function(XMLHttpRequest, textStatus){
                         console.log(XMLHttpRequest);  //XMLHttpRequest.responseText    XMLHttpRequest.status   XMLHttpRequest.readyState
@@ -78,10 +79,9 @@
                 loading: false,
                 // 返回的history的JSON格式
                 resultData: {
-                    fileName:"fileName.txt",
-                    possibility:"0.8",
-                    submissionTime:"012-03-24 01:23:34.0",
-                    errorInfo:""
+                    fileName:"",
+                    possibility:"",
+                    submissionTime:""
                 }
             }
         },
