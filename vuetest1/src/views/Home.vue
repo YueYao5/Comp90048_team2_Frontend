@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>User Guide</h1>
-    <p>Welcome to our website. This is the testing platform for the research project of Authorship Verification conducted at the University of Melbourne.
+    <p style="text-align: justify-all">Welcome to our website. This is the testing platform for the research project of Authorship Verification conducted at the University of Melbourne.
       <br>
-      <br>By using this website, the user can test whether a specific text is written by an author by comparing with the known files written by the author applying the existing algorithm.
+      <br style="font-family: 'Times New Roman'">By using this website, the user can test whether a specific text is written by an author by comparing with the known files written by the author applying the existing algorithm.
       <br>
       <br>Want to try out yourself? Follow these few steps below, you can test your own files and see the output within a just few minutes!!
       <br>

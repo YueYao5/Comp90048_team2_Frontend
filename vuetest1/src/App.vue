@@ -38,6 +38,7 @@
               </el-main>
           </el-container>
       </el-container>
+      <el-footer height="5%" style="text-align: right; font-size: 12px">Copyright © 2020 The University of Melbourne. All rights reserved.</el-footer>
 
   </div>
 </template>
