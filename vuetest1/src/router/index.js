@@ -12,6 +12,7 @@ import UploadFiles from "../views/UploadFiles";
 import SignIn from "../views/Login";
 import SignUp from "../views/Register";
 import Progress from "../views/Progress";
+import newTesting from "../views/newTesting";
 
 Vue.use(VueRouter)
 
@@ -91,6 +92,14 @@ Vue.use(VueRouter)
       path: '/Progress',
       name: 'Progress',
       component: Progress,
+      props:true,
+      show: false
+    },
+    {
+      // 测试history
+      path: '/newTesting',
+      name: 'newTesting',
+      component: newTesting,
       props:true,
       show: false
     }

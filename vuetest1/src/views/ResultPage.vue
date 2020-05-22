@@ -8,7 +8,9 @@
                    height="400"
                    :category="categoryData"
                    :legend="legendData"
-                   seriesType="bar"></component>
+                   seriesType="bar">
+        </component>
+        <p>{{explanation}}</p>
     </div>
 
 </template>
@@ -18,6 +20,7 @@
     var probability=[]
     var threshold=[]
     var matricsName=[]
+    var explanation
     export default {
         name: "ResultPage",
         data(){
@@ -33,7 +36,7 @@
                 },
                 // 图表数据
                 barData: {
-                    'possible':probability,
+                    'possibility':probability,
                     'threshold':threshold
                 },
                 focusType: 1,
@@ -42,7 +45,7 @@
                 categoryData: {
                     data: matricsName
                 },
-                legendData: ['possible','threshold'],
+                legendData: ['possibility','threshold'],
                 echarttitle: {
                     text: 'Result(%)',
                     left: 'right',
@@ -77,6 +80,7 @@
             for (var i in this.resultData["thresholdTable"]){
                 threshold.push(this.resultData["thresholdTable"][i]["threshold"]*100)
             }
+            explanation=this.resultData["explanation"]
         }
 
     }
