@@ -30,12 +30,12 @@ Vue.use(VueRouter)
       },
       {
         path: '/Test',
-        name: 'Try Your Model',
+        name: 'Try Out Model',
         component: Test
       },
       {
         path: '/History',
-        name: 'Review the Record',
+        name: 'Review the History',
         component: History
       }
     ]
