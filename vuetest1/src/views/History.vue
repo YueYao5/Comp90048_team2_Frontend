@@ -2,7 +2,7 @@
     <div>
         <div v-loading="loading"> </div>
         <h1>History Page</h1>
-        <el-table :data="this.resultData" v-if="this.resultData[0]['fileName']=='null'">
+        <el-table :data="this.resultData" v-if="this.resultData[0]['fileName']!='null'">
             <el-table-column prop="submissionTime" label="Submission Time" style="width: 100%">
             </el-table-column>
             <el-table-column prop="fileName" label="File Name" >
