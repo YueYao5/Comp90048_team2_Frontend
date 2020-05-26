@@ -80,7 +80,7 @@
                 })
                 $.ajax({
                     async : false,
-                    url : "http://localhost:8181//runalgo",
+                    url : "http://13.211.203.113:8181//runalgo",
                     type : 'POST',
                     contentType : 'application/x-www-form-urlencoded',
                     dataType:'json',
@@ -116,11 +116,11 @@
                 message:'',
                 known: {
                     // 可通过 https://github.com/simple-uploader/Uploader/tree/develop/samples/Node.js 示例启动服务
-                    target: '//localhost:8181//uploadKnown',
+                    target: '//13.211.203.113:8181//uploadKnown',
                     testChunks: false,
                 },
                 unknown:{
-                    target: '//localhost:8181//uploadUnknown',
+                    target: '//13.211.203.113:8181//uploadUnknown',
                     testChunks: false,
                 },
                 attrs: {

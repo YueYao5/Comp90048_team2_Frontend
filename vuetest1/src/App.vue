@@ -77,7 +77,7 @@
             },
             runLogout(){
                 this.global.userName='';
-                location.reload();
+                this.$router.push({path: '/'})
             }
 
 

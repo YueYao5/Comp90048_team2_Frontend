@@ -42,7 +42,7 @@
                 // 请求接口
                 $.ajax({
                     async : false,
-                    url : 'http://localhost:8181//getRecords',
+                    url : 'http://13.211.203.113:8181//getRecords',
                     type : 'POST',
                     contentType : 'application/x-www-form-urlencoded',
                     dataType:'json',

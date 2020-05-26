@@ -59,7 +59,7 @@
                             "userPassword": this.user.password})
                         $.ajax({
                             async : false,
-                            url : "http://localhost:8181//register",
+                            url : "http://13.211.203.113:8181//register",
                             type : 'POST',
                             contentType : 'application/x-www-form-urlencoded',
                             dataType:'text',

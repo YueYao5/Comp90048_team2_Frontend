@@ -56,7 +56,7 @@
 
                     $.ajax({
                         async : false,
-                        url : "http://localhost:8181//login",
+                        url : "http://13.211.203.113:8181//login",
                         type : 'POST',
                         contentType : 'application/x-www-form-urlencoded',
                         dataType:'text',
